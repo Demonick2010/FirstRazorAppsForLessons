@@ -1,7 +1,4 @@
-﻿using System;
-using FirstRazorApp.Models;
-
-namespace Models
+﻿namespace FirstRazorApp.Models
 {
     public class Employee
     {

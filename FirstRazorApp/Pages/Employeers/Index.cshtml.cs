@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AppRepository;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using FirstRazorApp.AppRepository;
+using FirstRazorApp.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
 
 namespace FirstRazorApp.Pages.Employeers
 {

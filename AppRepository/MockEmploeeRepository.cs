@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using FirstRazorApp.Models;
-using Models;
 
-namespace AppRepository
+namespace FirstRazorApp.AppRepository
 {
     public class MockEmploeeRepository : IEmpoyeeRepository
     {

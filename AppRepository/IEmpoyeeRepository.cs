@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Models;
+﻿using System.Collections.Generic;
+using FirstRazorApp.Models;
 
-namespace AppRepository
+namespace FirstRazorApp.AppRepository
 {
     public interface IEmpoyeeRepository
     {
