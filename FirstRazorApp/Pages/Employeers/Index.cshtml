@@ -1,18 +1,29 @@
 ﻿@page
 @model FirstRazorApp.Pages.Employeers.IndexModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employeers";
 }
 
 <h1>Employees</h1>
 
-<div class="card-deck">
-    @foreach(var item in Model.Employees)
-    {
-        var photoPath = $"~/images/{item.PotoPath}";
+        <div class="card-deck">
+            @foreach (var item in Model.Employees)
+            {
+                var photoPath = $"~/images/{item.PotoPath ?? "noimage.png"}";
 
-        <div class="card m-3">
+                <div class="card m-3" style="min-width: 18rem; max-width: 30.5%;">
+                    <div class="card-header text-center">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class="text-center">
+                        <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                    </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-primary m-1">View</a>
+                            <a href="#" class="btn btn-primary m-1">Edit</a>
+                            <a href="#" class="btn btn-primary m-1">Delete</a>
+                        </div>
 
+                    </div>
+            }
         </div>
-    }
-</div>

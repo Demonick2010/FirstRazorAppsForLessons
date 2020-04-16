@@ -23,7 +23,9 @@ namespace AppRepository
                 new Employee()
                     {Id = 3, Name = "Shawn", Email = "example2@example.com", PotoPath = "avatar5.png", Department = Dept.Payroll},
                 new Employee()
-                    {Id = 4, Name = "Jeniffer", Email = "example3@example.com", PotoPath = "avatar3.png", Department = Dept.HR}
+                    {Id = 4, Name = "Jeniffer", Email = "example3@example.com", PotoPath = "avatar3.png", Department = Dept.HR},
+                new Employee()
+                    {Id = 5, Name = "Sten", Email = "example4@example.com", Department = Dept.Payroll}
             };
         }
 
