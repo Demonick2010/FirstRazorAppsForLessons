@@ -1,0 +1,18 @@
+﻿@page
+@model FirstRazorApp.Pages.Employeers.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+<div class="card-deck">
+    @foreach(var item in Model.Employees)
+    {
+        var photoPath = $"~/images/{item.PotoPath}";
+
+        <div class="card m-3">
+
+        </div>
+    }
+</div>
