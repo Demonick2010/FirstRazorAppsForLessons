@@ -12,7 +12,18 @@
                 <h1>@Model.Employee.Name</h1>
             </div>
             <div class="card-body cardBodyStyle text-center">
-
+                <div class="text-center">
+                    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                    
+                    <h4>Employee ID: @Model.Employee.Id</h4><hr/>
+                    <h4>Email: @Model.Employee.Email</h4><hr />
+                    <h4>Department: @Model.Employee.Department</h4>
+                </div>
+                <div class="card-footer text-center" style="border-radius: 0 0 45px 0 !important;">
+                    <a asp-page="index" class="btn btn-primary buttonShadow">Back</a>
+                    <a href="#" class="btn btn-primary buttonShadow">Edit</a>
+                    <a href="#" class="btn btn-danger buttonShadow">Delete</a>
+                </div>
             </div>
         </div>
     </div>

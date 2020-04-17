@@ -89,9 +89,10 @@ body {
     background: -o-linear-gradient(left, rgba(0,96,120,1) 0%, rgba(165,182,194,1) 50%, rgba(176,185,212,1) 51%, rgba(40,67,247,1) 71%, rgba(0,51,255,1) 100%);
     background: -ms-linear-gradient(left, rgba(0,96,120,1) 0%, rgba(165,182,194,1) 50%, rgba(176,185,212,1) 51%, rgba(40,67,247,1) 71%, rgba(0,51,255,1) 100%);
     background: linear-gradient(to right, rgba(0,96,120,1) 0%, rgba(165,182,194,1) 50%, rgba(176,185,212,1) 51%, rgba(40,67,247,1) 71%, rgba(0,51,255,1) 100%);
-    border-radius: 5px;
+    border-radius: 45px 0 0 0 !important;
     color: #000;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .cardBodyStyle {
@@ -108,4 +109,12 @@ body {
     -webkit-box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.75);
     -moz-box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.75);
     box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.75);
+}
+
+.card {
+    border-radius: 45px 0 45px 0;
+}
+
+.card-body {
+    border-radius: 0 0 45px 0;
 }
