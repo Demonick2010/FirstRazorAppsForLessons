@@ -1,0 +1,20 @@
+﻿@page
+@model FirstRazorApp.Pages.Employeers.DetailsModel
+@{
+    ViewData["Title"] = "Employee Details";
+    var photoPath = $"~/images/{Model.Employee.PotoPath ?? "noimage.png"}";
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header cardHeaderStyle">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+            <div class="card-body cardBodyStyle text-center">
+
+            </div>
+        </div>
+    </div>
+</div>
+

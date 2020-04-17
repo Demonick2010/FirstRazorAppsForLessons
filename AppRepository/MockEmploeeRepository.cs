@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FirstRazorApp.Models;
 
 namespace FirstRazorApp.AppRepository
@@ -29,6 +30,11 @@ namespace FirstRazorApp.AppRepository
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _peopleList;
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            return _peopleList.FirstOrDefault(x => x.Id == id);
         }
     }
 }
