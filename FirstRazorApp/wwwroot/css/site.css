@@ -90,8 +90,8 @@ body {
 }
 
 .imageThumbnail {
-    height: 110px;
-    width: 75px;
+    max-height: 110px;
+    max-width: 75px;
 }
 
 .cardBoxShadow {
