@@ -7,22 +7,31 @@
 
 <div class="row justify-content-center m-3">
     <div class="col-sm-8">
-        <div class="card">
+        <div class="card cardBoxShadow">
             <div class="card-header cardHeaderStyle">
                 <h1>@Model.Employee.Name</h1>
             </div>
             <div class="card-body cardBodyStyle text-center">
-                <div class="text-center">
-                    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
-                    
-                    <h4>Employee ID: @Model.Employee.Id</h4><hr/>
-                    <h4>Email: @Model.Employee.Email</h4><hr />
-                    <h4>Department: @Model.Employee.Department</h4>
+                <div class="row">
+                    <div class="col">
+                        <h4 class="cardTextLeftFloating">Employee ID: @Model.Employee.Id</h4><hr />
+                        <h4 class="cardTextLeftFloating">Email: @Model.Employee.Email</h4><hr />
+                        <h4 class="cardTextLeftFloating">Department: <span class="text-danger font-weight-bold">@Model.Employee.Department</span></h4>
+                    </div>
+                    <div class="col-3">
+                        <div style="border-right: 1px solid rgba(0,0,0,.1);">
+                            <img class="card-img-top imageThumbnail border border-primary" style="background-color: #fff6;" src="@photoPath" asp-append-version="true" />
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer text-center" style="border-radius: 0 0 45px 0 !important;">
-                    <a asp-page="index" class="btn btn-primary buttonShadow">Back</a>
-                    <a href="#" class="btn btn-primary buttonShadow">Edit</a>
-                    <a href="#" class="btn btn-danger buttonShadow">Delete</a>
+                <div class="row">
+                    <div class="col">
+                        <div class="card-footer text-center" style="background-color: rgba(0, 0, 0, 0.25);">
+                            <a asp-page="index" class="btn btn-primary buttonShadow">Back</a>
+                            <a href="#" class="btn btn-primary buttonShadow">Edit</a>
+                            <a href="#" class="btn btn-danger buttonShadow">Delete</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

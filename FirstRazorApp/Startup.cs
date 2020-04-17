@@ -1,6 +1,7 @@
 using FirstRazorApp.AppRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +22,20 @@ namespace FirstRazorApp
         {
             services.AddRazorPages();
             services.AddSingleton<IEmpoyeeRepository, MockEmploeeRepository>();
+
+            // Добавляем сервисы форматирования строки браузера
+            // Переводим все символы запроса в нижний регистр
+            services.Configure<RouteOptions>(options =>
+            {
+                // Переводит всю строку в нижний регистр
+                options.LowercaseUrls = true;
+
+                // Только запросы (передаваемые в строке параметры), например ID, NAME.. в нижний регистр
+                options.LowercaseQueryStrings = false;
+
+                // Добавить слэш после каждого параметра
+                options.AppendTrailingSlash = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

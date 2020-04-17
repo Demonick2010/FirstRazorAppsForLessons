@@ -1,6 +1,8 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -27,7 +29,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 16px;
 }
 @media (min-width: 768px) {
   html {
@@ -59,8 +61,10 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    margin-top: 80px;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 .footer {
   position: absolute;
@@ -70,9 +74,24 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.containerBordered {
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+}
+
+.menuBg {
+    background: rgba(19,6,120,1);
+    background: -moz-linear-gradient(left, rgba(19,6,120,1) 0%, rgba(23,8,158,1) 31%, rgba(36,12,245,1) 51%, rgba(94,76,255,1) 71%, rgba(156,145,255,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(19,6,120,1)), color-stop(31%, rgba(23,8,158,1)), color-stop(51%, rgba(36,12,245,1)), color-stop(71%, rgba(94,76,255,1)), color-stop(100%, rgba(156,145,255,1)));
+    background: -webkit-linear-gradient(left, rgba(19,6,120,1) 0%, rgba(23,8,158,1) 31%, rgba(36,12,245,1) 51%, rgba(94,76,255,1) 71%, rgba(156,145,255,1) 100%);
+    background: -o-linear-gradient(left, rgba(19,6,120,1) 0%, rgba(23,8,158,1) 31%, rgba(36,12,245,1) 51%, rgba(94,76,255,1) 71%, rgba(156,145,255,1) 100%);
+    background: -ms-linear-gradient(left, rgba(19,6,120,1) 0%, rgba(23,8,158,1) 31%, rgba(36,12,245,1) 51%, rgba(94,76,255,1) 71%, rgba(156,145,255,1) 100%);
+    background: linear-gradient(to right, rgba(19,6,120,1) 0%, rgba(23,8,158,1) 31%, rgba(36,12,245,1) 51%, rgba(94,76,255,1) 71%, rgba(156,145,255,1) 100%);
+}
+
 .imageThumbnail {
-    height: 150px;
-    width: 100px;
+    height: 110px;
+    width: 75px;
 }
 
 .cardBoxShadow {
@@ -117,4 +136,10 @@ body {
 
 .card-body {
     border-radius: 0 0 45px 0;
+}
+
+.cardTextLeftFloating {
+    text-align: left;
+    text-transform: uppercase;
+    padding-left: 20px;
 }
