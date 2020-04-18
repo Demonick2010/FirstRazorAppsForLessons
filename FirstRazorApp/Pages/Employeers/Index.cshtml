@@ -10,25 +10,31 @@
     <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
 }
 
-<div class="card-deck">
-    @foreach (var item in Model.Employees)
-    {
-        var photoPath = $"~/images/{item.PotoPath ?? "noimage.png"}";
+<div class="row">
+    
+    <div class="card-deck">
+        @foreach (var item in Model.Employees)
+        {
+            
+                var photoPath = $"~/images/{item.PotoPath ?? "noimage.png"}";
+            <div class="col col-sm-6 col-lg-4">
+                <div class="card m-3 cardBoxShadow">
+                    <div class="card-header text-center cardHeaderStyle">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class="text-center cardBodyStyle">
+                        <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                    </div>
+                    <div class="card-footer text-center">
+                        <!--Первый способ передать параметр через строку браузера asp-route-ID-->
+                        <a asp-page="/Employeers/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
+                        <a asp-page="/Employeers/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
+                        <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                    </div>
 
-        <div class="card m-3 cardBoxShadow" style="min-width: 18rem; max-width: 30.5%;">
-            <div class="card-header text-center cardHeaderStyle">
-                <h3>@item.Name</h3>
+                </div>
             </div>
-            <div class="text-center cardBodyStyle">
-                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                }
             </div>
-            <div class="card-footer text-center">
-                <!--Первый способ передать параметр через строку браузера asp-route-ID-->
-                <a asp-page="/Employeers/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
-                <a asp-page="/Employeers/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
-                <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
-            </div>
-
-        </div>
-    }
+        
 </div>
