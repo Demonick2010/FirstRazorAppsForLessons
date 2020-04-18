@@ -36,5 +36,22 @@ namespace FirstRazorApp.AppRepository
         {
             return _peopleList.FirstOrDefault(x => x.Id == id);
         }
+
+        public Employee Update(Employee updatedEmployee)
+        {
+            // Получаем из списка нужного работника для обновления
+            Employee employee = _peopleList.FirstOrDefault(x => x.Id == updatedEmployee.Id);
+
+            // Проверяем результат на NULL
+            if (employee != null)
+            {
+                employee.Name = updatedEmployee.Name;
+                employee.Email = updatedEmployee.Email;
+                employee.Department = updatedEmployee.Department;
+                employee.PotoPath = updatedEmployee.PotoPath;
+            }
+
+            return employee;
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@*@page "/view/{id:even}"*@
-@page
+@page "{id}"
 @model FirstRazorApp.Pages.Employeers.DetailsModel
 @{
     ViewData["Title"] = "Employee Details";
@@ -30,7 +30,7 @@
                     <div class="col">
                         <div class="card-footer text-center" style="background-color: rgba(0, 0, 0, 0.25);">
                             <a asp-page="index" class="btn btn-success buttonShadow">Back</a>
-                            <a href="#" class="btn btn-primary buttonShadow">Edit</a>
+                            <a asp-page="/Employeers/Edit" asp-route-ID="@Model.Employee.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
                             <a href="#" class="btn btn-danger buttonShadow">Delete</a>
                         </div>
                     </div>

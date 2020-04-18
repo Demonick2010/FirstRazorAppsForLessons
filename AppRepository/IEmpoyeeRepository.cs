@@ -7,5 +7,6 @@ namespace FirstRazorApp.AppRepository
     {
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployee(int id);
+        Employee Update(Employee updatedEmployee);
     }
 }

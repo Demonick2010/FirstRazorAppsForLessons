@@ -5,6 +5,10 @@
 }
 
 <h1 class="text-center">Employees: @Model.Employees.Count()</h1>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+}
 
 <div class="card-deck">
     @foreach (var item in Model.Employees)
@@ -21,7 +25,7 @@
             <div class="card-footer text-center">
                 <!--Первый способ передать параметр через строку браузера asp-route-ID-->
                 <a asp-page="/Employeers/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
-                <a href="#" class="btn btn-primary m-1 buttonShadow">Edit</a>
+                <a asp-page="/Employeers/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
                 <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
             </div>
 
