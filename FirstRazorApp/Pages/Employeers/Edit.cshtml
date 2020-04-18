@@ -17,35 +17,35 @@
 
     <!--Добавляем поля редактирования-->
     <div class="row justify-content-center m-3">
-        <div class="col-8">
+        <div class="col col-lg-8">
             <div class="card cardBoxShadow">
                 <div class="card-header cardHeaderStyle text-center">
                     <!--Добавляем поле редактирования имени-->
                     <div class="form-group row">
-                        <label asp-for="Employee.Name" class="col-4 col-form-label text-right">Edit Name:</label>
-                        <div class="col-6">
-                            <input asp-for="Employee.Name" class="form-control" placeholder="@Model.Employee.Name" value="" />
+                        <label asp-for="Employee.Name" class="col col-lg-4 col-form-label text-right">Edit Name:</label>
+                        <div class="col col-lg-6">
+                            <input asp-for="Employee.Name" class="form-control" placeholder="@Model.Employee.Name" />
                         </div>
                     </div>
 
                 </div>
                 <div class="card-body cardBodyStyle text-center">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col col-lg-9">
                             <h4 class="cardTextLeftFloating">Employee ID: @Model.Employee.Id</h4><hr />
 
                             <!--Добавляем поле редактирования e-mail-->
                             <div class="form-group row">
-                                <label asp-for="Employee.Email" class="col-4 col-form-label text-right">Edit mail:</label>
-                                <div class="col-6">
-                                    <input asp-for="Employee.Email" class="form-control" placeholder="@Model.Employee.Email" value="" />
+                                <label asp-for="Employee.Email" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
+                                <div class="col-12 col-lg-6">
+                                    <input asp-for="Employee.Email" class="form-control mr-2" placeholder="@Model.Employee.Email" />
                                 </div>
                             </div>
                             <hr />
                             <!--Добавляем поле редактирования департамента-->
                             <div class="form-group row">
-                                <label asp-for="Employee.Department" class="col-4 col-form-label text-right">Edit Department:</label>
-                                <div class="col-6">
+                                <label asp-for="Employee.Department" class="col col-lg-4 col-form-label text-right">Edit Department:</label>
+                                <div class="col-12 col-lg-6">
                                     <!--Создаём выпадающий список с департаментами-->
                                     <!--Необходимо подключить класс локально или глобально-->
                                     <select asp-for="Employee.Department" class="custom-select mr-2" asp-items="Html.GetEnumSelectList<Dept>()">
@@ -56,14 +56,14 @@
                             </div>
                             <hr />
                         </div>
-                        <div class="col-3">
+                        <div class="col col-lg-3">
                             <div style="border-right: 1px solid rgba(0,0,0,.1);">
                                 <img class="card-img-top imageThumbnail border border-primary" style="background-color: #d1e7ff;" src="@photoPath" asp-append-version="true" />
                                 <!--Добавляем редактирование изображения-->
 
                                 <div class="custom-file">
                                     <input asp-for="Photo" class="custom-file-input form-control" />
-                                    <label class="custom-file-label"></label>
+                                    <label class="custom-file-label text-left"></label>
                                 </div>
 
                             </div>

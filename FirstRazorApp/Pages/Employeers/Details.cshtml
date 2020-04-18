@@ -8,19 +8,19 @@
 <!--Второй способ передать параметр через page-->
 
 <div class="row justify-content-center m-3">
-    <div class="col-8">
+    <div class="col col-lg-8">
         <div class="card cardBoxShadow">
             <div class="card-header cardHeaderStyle">
                 <h1>@Model.Employee.Name</h1>
             </div>
             <div class="card-body cardBodyStyle text-center">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col col-lg-9">
                         <h4 class="cardTextLeftFloating">Employee ID: @Model.Employee.Id</h4><hr />
                         <h4 class="cardTextLeftFloating">Email: @Model.Employee.Email</h4><hr />
                         <h4 class="cardTextLeftFloating">Department: <span class="text-danger font-weight-bold">@Model.Employee.Department</span></h4>
                     </div>
-                    <div class="col-3">
+                    <div class="col col-lg-3">
                         <div style="border-right: 1px solid rgba(0,0,0,.1);">
                             <img class="card-img-top imageThumbnail border border-primary" style="background-color: #d1e7ff;" src="@photoPath" asp-append-version="true" />
                         </div>
