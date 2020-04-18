@@ -19,9 +19,20 @@ namespace FirstRazorApp.Pages.Employeers
         }
 
         public Employee Employee { get; private set; }
-        public void OnGet(int id)
+
+        // Теперь метод возвращает результат обработки, поэтому меняем тип с void на IActionResult
+        public IActionResult OnGet(int id)
         {
             Employee = _employeeRepository.GetEmployee(id);
+
+            // Добавляем проверку на null и делаем обработчик исключения
+            if (Employee == null)
+            {
+                // Если модель пустая, то возвращаем в ответ на GET запрос страницу НЕ НАЙДЕНО
+                return RedirectToPage("/NotFound");
+            }
+            // В противном случаи, возвращаем страницу
+            return Page();
         }
     }
 }

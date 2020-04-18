@@ -1,0 +1,18 @@
+﻿@page
+@model FirstRazorApp.Pages.NotFoundModel
+@{
+    ViewData["Title"] = "Not Found";
+}
+
+<div class="row">
+    <div class="col text-center">
+        <img src="/images/NotFound.png" alt="Page Not Found" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <h1>The resource you are looking for cannot be found!</h1>
+        <a asp-page="/Employeers/Index" class="btn btn-primary">Click here to get back to Employees list page</a>
+    </div>
+</div>

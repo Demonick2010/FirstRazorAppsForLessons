@@ -20,7 +20,10 @@ namespace FirstRazorApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Добавляем сервис рэйзор-страниц
             services.AddRazorPages();
+
+            // Подключаем сервис мок репоситория, связывая интерфейс и класс реализации
             services.AddSingleton<IEmpoyeeRepository, MockEmploeeRepository>();
 
             // Добавляем сервисы форматирования строки браузера
@@ -35,6 +38,9 @@ namespace FirstRazorApp
 
                 // Добавить слэш после каждого параметра
                 options.AppendTrailingSlash = true;
+
+                // Добавляем ограничение которое мы задали в классе EvenConstraint
+                options.ConstraintMap.Add("even", typeof(EvenConstraint));
             });
         }
 

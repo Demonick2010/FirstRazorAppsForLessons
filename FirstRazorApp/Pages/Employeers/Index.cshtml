@@ -19,6 +19,7 @@
                 <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
             </div>
             <div class="card-footer text-center">
+                <!--Первый способ передать параметр через строку браузера asp-route-ID-->
                 <a asp-page="/Employeers/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
                 <a href="#" class="btn btn-primary m-1 buttonShadow">Edit</a>
                 <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>

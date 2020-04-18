@@ -1,12 +1,14 @@
-﻿@page
+﻿@*@page "/view/{id:even}"*@
+@page
 @model FirstRazorApp.Pages.Employeers.DetailsModel
 @{
     ViewData["Title"] = "Employee Details";
     var photoPath = $"~/images/{Model.Employee.PotoPath ?? "noimage.png"}";
 }
+<!--Второй способ передать параметр через page-->
 
 <div class="row justify-content-center m-3">
-    <div class="col-sm-8">
+    <div class="col-8">
         <div class="card cardBoxShadow">
             <div class="card-header cardHeaderStyle">
                 <h1>@Model.Employee.Name</h1>
@@ -37,4 +39,3 @@
         </div>
     </div>
 </div>
-
