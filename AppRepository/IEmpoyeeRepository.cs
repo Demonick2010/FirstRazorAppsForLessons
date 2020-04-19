@@ -10,5 +10,8 @@ namespace FirstRazorApp.AppRepository
         Employee Update(Employee updatedEmployee);
         Employee Add(Employee newEmployee);
         Employee Delete(int id);
+
+        // Подключаем свойство отслеживания количества
+        IEnumerable<DeptHeadCount> EmployeeCountByDept();
     }
 }

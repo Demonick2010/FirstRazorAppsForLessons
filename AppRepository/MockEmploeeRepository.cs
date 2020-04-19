@@ -80,5 +80,15 @@ namespace FirstRazorApp.AppRepository
 
             return employeeToDelete;
         }
+
+        public IEnumerable<DeptHeadCount> EmployeeCountByDept()
+        {
+            return _peopleList.GroupBy(x => x.Department)
+                .Select(p => new DeptHeadCount()
+                {
+                    Department = p.Key.Value,
+                    Count = p.Count()
+                }).ToList();
+        }
     }
 }
