@@ -24,10 +24,16 @@ namespace FirstRazorApp.Pages.Employeers
             _webHostEnvironment = webHostEnvironment;
         }
 
+        [BindProperty]
         public Employee Employee { get; set; }
 
         [BindProperty] 
         public IFormFile Photo { get; set; }
+
+        [BindProperty] 
+        public bool Notify { get; set; }
+
+        public string Message { get; set; }
 
         public IActionResult OnGet(int id)
         {
@@ -41,29 +47,36 @@ namespace FirstRazorApp.Pages.Employeers
             return Page();
         }
 
-        public IActionResult OnPost(Employee employee)
+        public IActionResult OnPost()
         {
-            // Сохраняем изображение
-            if (Photo != null)
+            // Проверяем модель на валидность
+            if (ModelState.IsValid)
             {
-                if (employee.PotoPath != null)
+                // Сохраняем изображение
+                if (Photo != null)
                 {
-                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", employee.PotoPath);
+                    if (Employee.PotoPath != null)
+                    {
+                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", Employee.PotoPath);
 
-                    if (employee.PotoPath != "noimage.png")
-                        System.IO.File.Delete(filePath);
+                        if (Employee.PotoPath != "noimage.png")
+                            System.IO.File.Delete(filePath);
+                    }
+
+                    Employee.PotoPath = ProcessUploadedFile();
                 }
-                employee.PotoPath = ProcessUploadedFile();
+
+                // Обноляем данные в базе
+                Employee = _empoyeeRepository.Update(Employee);
+
+                // Записываем сообщение в TemData
+                TempData["SuccessMessage"] = $"Update {Employee.Name} success!";
+
+                // Возвращаем представление Index
+                return RedirectToPage("/Employeers/Index");
             }
 
-            // Обноляем данные в базе
-            Employee = _empoyeeRepository.Update(employee);
-
-            // Записываем сообщение в TemData
-            TempData["SuccessMessage"] = $"Update {employee.Name} success!";
-
-            // Возвращаем представление Index
-            return RedirectToPage("/Employeers/Index");
+            return Page();
         }
 
         // Создаём метод обработки загруженных изображений
@@ -83,6 +96,21 @@ namespace FirstRazorApp.Pages.Employeers
             }
 
             return uniqueFileName;
+        }
+
+        // Создаём метод обработки формы уведомлений
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            if (Notify)
+            {
+                Message = "Thank you for turning on notifications";
+            }
+            else
+            {
+                Message = "You have turned off email notifications";
+            }
+
+            Employee = _empoyeeRepository.GetEmployee(id);
         }
     }
 }

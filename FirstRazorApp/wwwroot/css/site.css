@@ -165,3 +165,10 @@ body {
     text-transform: uppercase;
     padding-left: 20px;
 }
+
+.notifyBlock {
+    background-color: #7fc8f3;
+    padding: 10px 0 10px 0;
+    border-radius: 0 0 15px 15px;
+    margin-top: -10px;
+}

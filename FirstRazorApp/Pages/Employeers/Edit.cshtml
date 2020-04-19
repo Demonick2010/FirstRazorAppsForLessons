@@ -1,14 +1,44 @@
-﻿@page "{id:min(1)}"
+﻿@page "{id:min(1)}/{handler?}"
 @model FirstRazorApp.Pages.Employeers.EditModel
 @{
     ViewData["Title"] = $"Edit {Model.Employee.Name ?? "Unknown"}";
     string photoPath = $"/images/{Model.Employee.PotoPath ?? "noimage.png"}";
 }
 
+<!--Добавляем поле с запросом об извещении об изменениях в профиле на е-маил-->
+<!--Вторая форма на странице-->
+<!--Хэлпер asp-page-handler="UpdateNotificationPreferences" явно указывает форме к какому методу обработки обращаться-->
+<form method="post" asp-page-handler="UpdateNotificationPreferences">
+    <div class="row text-center notifyBlock">
+        <div class="col form-check">
+            <h1>Notification Preference</h1>
+            <input asp-for="Notify" class="form-check-input" />
+            <label asp-for="Notify" class="form-check-label">
+                <p>Recive email notification when my details change</p>
+            </label><br />
+
+            <button type="submit" class="btn btn-primary text-center">Update Notification Preferences</button>
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <p>
+                    <div class="alert alert-success">
+                        @Model.Message
+                    </div>
+                </p>
+            }
+        </div>
+    </div>
+
+</form>
+<hr />
+
 <h1 class="text-center">Edit @Model.Employee.Name profile</h1>
 
+<!--Вывод всех ошибок модели-->
+<div asp-validation-summary="All" class="text-danger text-center"></div>
+
 <!--Создаём форму редактирования-->
-<form method="post" class="mt-3" enctype="multipart/form-data">
+<form method="post" class="mt-3" enctype="multipart/form-data" asp-page-handler="OnPost">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="Employee.Id" />
 
@@ -25,6 +55,8 @@
                         <label asp-for="Employee.Name" class="col col-lg-4 col-form-label text-right">Edit Name:</label>
                         <div class="col col-lg-6">
                             <input asp-for="Employee.Name" class="form-control" placeholder="@Model.Employee.Name" />
+                            <!--Добавляем сообщение валидации формы-->
+                            <span asp-validation-for="Employee.Name" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -39,6 +71,8 @@
                                 <label asp-for="Employee.Email" class="col col-lg-4 col-form-label text-right">Edit E-mail:</label>
                                 <div class="col-12 col-lg-6">
                                     <input asp-for="Employee.Email" class="form-control mr-2" placeholder="@Model.Employee.Email" />
+                                    <!--Добавляем сообщение валидации формы-->
+                                    <span asp-validation-for="Employee.Email" class="text-danger"></span>
                                 </div>
                             </div>
                             <hr />
@@ -85,13 +119,6 @@
 </form>
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('.custom-file-input').on("change",
-                function () {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).next('.custom-file-label').html(fileName);
-                });
-        });
-    </script>
+
+    <script src="~/js/UploadBoxTextScript.js"></script>
 }
