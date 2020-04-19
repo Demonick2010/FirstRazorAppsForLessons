@@ -1,0 +1,28 @@
+﻿@model Employee
+
+@{
+    var photoPath = $"~/images/{Model.PotoPath ?? "noimage.png"}";
+    var showButtons = (bool)ViewData["ShowButtons"];
+}
+
+
+
+    <div class="card-deck">
+        <div class="card m-3 cardBoxShadow">
+            <div class="card-header text-center cardHeaderStyle">
+                <h3>@Model.Name</h3>
+            </div>
+            <div class="text-center cardBodyStyle" style="border-radius: 0 0 45px 0;">
+                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+            </div>
+            @if (showButtons)
+            {
+                <div class="card-footer text-center">
+                    <!--Первый способ передать параметр через строку браузера asp-route-ID-->
+                    <a asp-page="/Employeers/Details" asp-route-ID="@Model.Id" class="btn btn-success m-1 buttonShadow">View</a>
+                    <a asp-page="/Employeers/Edit" asp-route-ID="@Model.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
+                    <a asp-page="/Employeers/Delete" asp-route-ID="@Model.Id" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                </div>
+            }
+        </div>
+    </div>
