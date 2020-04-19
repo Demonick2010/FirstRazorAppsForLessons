@@ -1,0 +1,20 @@
+﻿@page "{id}"
+@model FirstRazorApp.Pages.Employeers.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center">Delete Confirmation</h1>
+
+<div class="row">
+    <div class="col text-center">
+        <div class="alert alert-danger">
+            <h5>Are you sure want to delete employee - @Model.Employee.Name ?</h5>
+            <form method="post">
+                <button type="submit" class="btn btn-danger">Yes</button>
+                <a class="btn btn-success" asp-page="/Employeers/Index">No</a>
+            </form>
+        </div>
+    </div>
+</div>
+

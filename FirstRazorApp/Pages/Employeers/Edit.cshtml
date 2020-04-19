@@ -1,38 +1,43 @@
-﻿@page "{id:min(1)}/{handler?}"
+﻿@page "{id:min(1)?}/{handler?}"
 @model FirstRazorApp.Pages.Employeers.EditModel
 @{
-    ViewData["Title"] = $"Edit {Model.Employee.Name ?? "Unknown"}";
     string photoPath = $"/images/{Model.Employee.PotoPath ?? "noimage.png"}";
+    string pageHeader = Model.Employee.Id > 0 ? $"Edit {Model.Employee.Name ?? "Unknown"} profile" : "Create";
+    string buttonText = Model.Employee.Id > 0 ? "Update" : "Create";
+    ViewData["Title"] = pageHeader;
 }
 
-<!--Добавляем поле с запросом об извещении об изменениях в профиле на е-маил-->
-<!--Вторая форма на странице-->
-<!--Хэлпер asp-page-handler="UpdateNotificationPreferences" явно указывает форме к какому методу обработки обращаться-->
-<form method="post" asp-page-handler="UpdateNotificationPreferences">
-    <div class="row text-center notifyBlock">
-        <div class="col form-check">
-            <h1>Notification Preference</h1>
-            <input asp-for="Notify" class="form-check-input" />
-            <label asp-for="Notify" class="form-check-label">
-                <p>Recive email notification when my details change</p>
-            </label><br />
 
-            <button type="submit" class="btn btn-primary text-center">Update Notification Preferences</button>
-            @if (!string.IsNullOrEmpty(Model.Message))
-            {
-                <p>
-                    <div class="alert alert-success">
-                        @Model.Message
-                    </div>
-                </p>
-            }
+@if (Model.Employee.Id > 0)
+{
+    <!--Добавляем поле с запросом об извещении об изменениях в профиле на е-маил-->
+    <!--Вторая форма на странице-->
+    <!--Хэлпер asp-page-handler="UpdateNotificationPreferences" явно указывает форме к какому методу обработки обращаться-->
+    <form method="post" asp-page-handler="UpdateNotificationPreferences">
+        <div class="row text-center notifyBlock">
+            <div class="col form-check">
+                <h1>Notification Preference</h1>
+                <input asp-for="Notify" class="form-check-input"/>
+                <label asp-for="Notify" class="form-check-label">
+                    <p>Recive email notification when my details change</p>
+                </label><br/>
+
+                <button type="submit" class="btn btn-primary text-center">Update Notification Preferences</button>
+                @if (!string.IsNullOrEmpty(Model.Message))
+                {
+                    <p>
+                        <div class="alert alert-success">
+                            @Model.Message
+                        </div>
+                    </p>
+                }
+            </div>
         </div>
-    </div>
+    </form>
+    <hr/>
+}
 
-</form>
-<hr />
-
-<h1 class="text-center">Edit @Model.Employee.Name profile</h1>
+<h1 class="text-center">@pageHeader</h1>
 
 <!--Вывод всех ошибок модели-->
 <div asp-validation-summary="All" class="text-danger text-center"></div>
@@ -86,6 +91,7 @@
                                         <!--Добавляем начальный элемент выпадающего списка-->
                                         <option value="">Please Select</option>
                                     </select>
+                                    <span asp-validation-for="Employee.Department" class="text-danger"></span>
                                 </div>
                             </div>
                             <hr />
@@ -107,8 +113,8 @@
                         <div class="col">
                             <div class="card-footer text-center" style="background-color: rgba(0, 0, 0, 0.25);">
                                 <a asp-page="index" class="btn btn-primary buttonShadow">Cancel</a>
-                                <button type="submit" class="btn btn-success m-1 buttonShadow">Update</button>
-                                <a href="#" class="btn btn-danger buttonShadow">Delete</a>
+                                <button type="submit" class="btn btn-success m-1 buttonShadow">@buttonText</button>
+                                <a asp-page="/Employeers/Delete" asp-route-ID="@Model.Employee.Id" class="btn btn-danger m-1 buttonShadow">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -121,4 +127,5 @@
 @section Scripts {
 
     <script src="~/js/UploadBoxTextScript.js"></script>
+    <partial name="_ValidationScriptsPartial" />
 }

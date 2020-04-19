@@ -11,13 +11,16 @@
 }
 
 <div class="row">
-    
-    <div class="card-deck">
-        @foreach (var item in Model.Employees)
-        {
-            
-                var photoPath = $"~/images/{item.PotoPath ?? "noimage.png"}";
-            <div class="col col-sm-6 col-lg-4">
+
+
+    @foreach (var item in Model.Employees)
+    {
+
+        var photoPath = $"~/images/{item.PotoPath ?? "noimage.png"}";
+
+        <div class="col-12 col-sm-6 col-lg-4">
+
+            <div class="card-deck">
                 <div class="card m-3 cardBoxShadow">
                     <div class="card-header text-center cardHeaderStyle">
                         <h3>@item.Name</h3>
@@ -29,12 +32,12 @@
                         <!--Первый способ передать параметр через строку браузера asp-route-ID-->
                         <a asp-page="/Employeers/Details" asp-route-ID="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
                         <a asp-page="/Employeers/Edit" asp-route-ID="@item.Id" class="btn btn-primary m-1 buttonShadow">Edit</a>
-                        <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                        <a asp-page="/Employeers/Delete" asp-route-ID="@item.Id" class="btn btn-danger m-1 buttonShadow">Delete</a>
                     </div>
 
                 </div>
             </div>
-                }
-            </div>
-        
+        </div>
+    }
 </div>
+

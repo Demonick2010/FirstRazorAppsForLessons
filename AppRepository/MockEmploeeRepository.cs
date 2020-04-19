@@ -53,5 +53,32 @@ namespace FirstRazorApp.AppRepository
 
             return employee;
         }
+
+        // Метод добавления нового работника
+        public Employee Add(Employee newEmployee)
+        {
+            // Присваиваем ID новому работнику
+            if (_peopleList.Count > 0)
+                newEmployee.Id = _peopleList.Max(x => x.Id) + 1;
+            else
+                newEmployee.Id = 1;
+
+            // Добавляем нового работника в лист
+            _peopleList.Add(newEmployee);
+
+            // Возвращаем нового работника
+            return newEmployee;
+        }
+
+        // Удаляем работника
+        public Employee Delete(int id)
+        {
+            Employee employeeToDelete = _peopleList.FirstOrDefault(x => x.Id == id);
+
+            if (employeeToDelete != null)
+                _peopleList.Remove(employeeToDelete);
+
+            return employeeToDelete;
+        }
     }
 }

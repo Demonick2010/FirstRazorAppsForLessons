@@ -35,9 +35,13 @@ namespace FirstRazorApp.Pages.Employeers
 
         public string Message { get; set; }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-            Employee = _empoyeeRepository.GetEmployee(id);
+
+            if (id.HasValue)
+                Employee = _empoyeeRepository.GetEmployee(id.Value);
+            else 
+                Employee = new Employee();
 
             if (Employee == null)
             {
@@ -66,8 +70,12 @@ namespace FirstRazorApp.Pages.Employeers
                     Employee.PotoPath = ProcessUploadedFile();
                 }
 
-                // Обноляем данные в базе
-                Employee = _empoyeeRepository.Update(Employee);
+                if (Employee.Id > 0)
+                    // Обноляем данные в базе
+                    Employee = _empoyeeRepository.Update(Employee);
+                else
+                    // Добавляем данные в базу
+                    Employee = _empoyeeRepository.Add(Employee);
 
                 // Записываем сообщение в TemData
                 TempData["SuccessMessage"] = $"Update {Employee.Name} success!";
