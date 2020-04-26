@@ -1,7 +1,9 @@
 using FirstRazorApp.AppRepository;
+using FirstRazorApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,11 +22,18 @@ namespace FirstRazorApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Добавляем контекст данных Entity Framework
+            services.AddDbContextPool<AppDbContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("AppDb"));
+                });
+
             // Добавляем сервис рэйзор-страниц
             services.AddRazorPages();
 
             // Подключаем сервис мок репоситория, связывая интерфейс и класс реализации
-            services.AddSingleton<IEmpoyeeRepository, MockEmploeeRepository>();
+            //services.AddSingleton<IEmpoyeeRepository, MockEmploeeRepository>();
+            services.AddScoped<IEmpoyeeRepository, SQLEmployeeRepository>();
 
             // Добавляем сервисы форматирования строки браузера
             // Переводим все символы запроса в нижний регистр
