@@ -12,6 +12,6 @@ namespace FirstRazorApp.AppRepository
         Employee Delete(int id);
 
         // Подключаем свойство отслеживания количества
-        IEnumerable<DeptHeadCount> EmployeeCountByDept();
+        IEnumerable<DeptHeadCount> EmployeeCountByDept(Dept? dept);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FirstRazorApp.Models;
 
@@ -81,9 +82,16 @@ namespace FirstRazorApp.AppRepository
             return employeeToDelete;
         }
 
-        public IEnumerable<DeptHeadCount> EmployeeCountByDept()
+        public IEnumerable<DeptHeadCount> EmployeeCountByDept(Dept? dept)
         {
-            return _peopleList.GroupBy(x => x.Department)
+            IEnumerable<Employee> query = _peopleList;
+
+            if (dept.HasValue)
+            {
+                query = query.Where(e => e.Department == dept.Value);
+            }
+
+            return query.GroupBy(x => x.Department)
                 .Select(p => new DeptHeadCount()
                 {
                     Department = p.Key.Value,

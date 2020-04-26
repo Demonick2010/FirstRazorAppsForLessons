@@ -39,3 +39,10 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col text-center">
+        @*@await Component.InvokeAsync("HeadCount", new { department = Model.Employee.Department })*@
+        <vc:head-count department="@Model.Employee.Department"></vc:head-count>
+    </div>
+</div>
