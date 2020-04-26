@@ -98,5 +98,16 @@ namespace FirstRazorApp.AppRepository
                     Count = p.Count()
                 }).ToList();
         }
+
+        // Метод поиска пользователей
+        public IEnumerable<Employee> Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return _peopleList;
+            }
+            return _peopleList.Where(x => x.Name.Contains(searchTerm) || 
+                                          x.Email.Contains(searchTerm));
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace FirstRazorApp.AppRepository
 {
     public interface IEmpoyeeRepository
     {
+        IEnumerable<Employee> Search(string searchTerm);
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployee(int id);
         Employee Update(Employee updatedEmployee);
